@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import UserCard from "./Components/UserCard";
 import { FaPlus } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import person from "./Components/suman.jpeg";
 
 const App = () => {
+  const [popCard, setPopcard] = useState(false);
+
+  const handleUsercard = () => {
+    setPopcard(!popCard);
+  };
   return (
     <div
       className="text-4xl  bg-zinc-200 h-screen flex items-center justify-around
@@ -19,7 +25,59 @@ const App = () => {
           Click your picture or add an account.
         </div>
         <div className="flex space-x-5 rounded-xl">
-          <UserCard name={"Suman"} imgUrl={person} />
+          <div onClick={handleUsercard}>
+            <UserCard name={"Suman"} imgUrl={person} />
+          </div>
+          {popCard && (
+            <div className="fixed inset-0  bg-black bg-opacity-50 flex items-center justify-center mb-8">
+              <div className="bg-white h-4/6  w-1/4 rounded-xl relative">
+                {" "}
+                <div className="flex flex-col items-center justify-center space-y-5 h-full">
+                  <div>
+                    <img
+                      src={person}
+                      alt="User"
+                      className="h-[250px] w-[250px] rounded-full  "
+                    />
+                  </div>
+                  <span>Suman Niroula</span>
+                  <input
+                    className="mt-8 p-3 ps-5  h-2rem w-5/6 ms-2 me-2 border border-cyan-700 text-gray-400   bg-blue-100  hover:bg-blue-200  text-[1.25rem] rounded-xl"
+                    placeholder="Enter Email or Password"
+                    type="text"
+                  />
+                  <div className="flex items-center justify-start space-x-3 mt-4 w-5/6">
+                    <input
+                      id="custom-checkbox"
+                      type="checkbox"
+                      className="h-5 w-5 text-cyan-700 bg-blue-100 border-2 border-cyan-700 rounded focus:ring-cyan-500 cursor-pointer"
+                    />
+                    <label
+                      htmlFor="custom-checkbox"
+                      className="text-gray-700 text-[1.25rem] cursor-pointer"
+                    >
+                      Remember Me
+                    </label>
+                  </div>
+                  <button
+                    className="mt-8 p-3 ps-5 ms-2 me-2 h-2rem w-5/6 border-cyan-500 text-white text-[2rem] bg-blue-500 hover:bg-blue-400
+          rounded-xl
+          "
+                  >
+                    Log In
+                  </button>
+                  <span className="text-xl mt-5 mb-5 text-blue-600 hover:underline cursor-pointer">
+                    Forget Password?
+                  </span>
+                </div>
+                <FaTimes
+                  onClick={() => setPopcard(false)}
+                  className="mt-2 bg-gray-200 px-2 py-1 rounded-full absolute top-0 right-2 text-gray-600 cursor-pointer p-1  hover:bg-gray-400"
+                />
+              </div>
+            </div>
+          )}
+
           <UserCard icons={<FaPlus />} name="Add Account" />
         </div>
       </div>
