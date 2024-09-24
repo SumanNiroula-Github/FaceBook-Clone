@@ -2,7 +2,7 @@ import React from "react";
 
 const UserCard = ({ imgUrl, icons, name }) => {
   return (
-    <div className="h-[17rem] w-[17rem] text-center border border-gray-400 rounded-xl hover:shadow-2xl cursor-pointer transition-shadow duration-300 flex flex-col">
+    <div className="h-[17rem] w-[15rem] text-center border border-gray-400 rounded-xl hover:shadow-2xl cursor-pointer transition-shadow duration-300 flex flex-col">
       <div className="flex-grow flex justify-center items-center h-[70%] ">
         {imgUrl ? (
           <img
