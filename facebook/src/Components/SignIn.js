@@ -1,10 +1,11 @@
-import React from 'react'
+import React from "react";
+import { FaTimes } from "react-icons/fa";
 
-const SignIn = () => {
+const SignIn = ({ handlePop }) => {
   return (
     <>
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center mb-8">
-        <div className="bg-white h-3/6 w-1/4 rounded-xl relative">
+      <div className="fixed inset-0 bg-white bg-opacity-70 flex items-center justify-center mb-8 p-5">
+        <div className="bg-white h-3/6 w-1/4 rounded-xl relative shadow-xl">
           <div className="flex flex-col items-start space-y-5 h-full mt-3 ">
             <span className="text-4xl font-bold ms-2">Sign Up</span>
             <span className="text-2xl text-gray-600 ms-2">
@@ -26,13 +27,13 @@ const SignIn = () => {
             </button>
           </div>
           <FaTimes
-            onClick={() => setSignUser(false)}
+            onClick={handlePop}
             className="mt-2 bg-gray-200 px-2 py-1 rounded-full absolute top-0 right-2 text-gray-600 cursor-pointer p-1 hover:bg-gray-400"
           />
         </div>
       </div>
     </>
   );
-}
+};
 
-export default SignIn
+export default SignIn;
